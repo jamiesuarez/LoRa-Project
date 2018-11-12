@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LoRa Receiver</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div class="topnav" id="myTopnav">
+		<a href="lora_home.html" width="150px"><img height="45px" width="85px" src="images/Lora_logo.png"></a>
+		<a href="lora_about.html">About</a>
+		<a href="lora_transmitter.html">Transmitter</a>
+		<a href="lora_receiver.html" class="active" style="color:black">Receiver</a>
+		<a href="lora_configure.html">Configuration</a>
+	</div>
+	<div class="main">
+		<h1 class="first-word">Receiver</h1>
+<!-- 		<div class="description">
+			<h2>Configuration</h2>
+				<li>Signal BW = 125kHz, CR = 4/8, SF = 12, Bit rate = 183 bits/sec</li>
+				<li>Explicit Header, CRC Enable, LDRO Enabled, Max payload length = 128 bytes</li>
+		</div> -->
+			<div class="wrap-table100" style="margin-left: 50px">
+				<div class="table100">
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column1">Name</th>
+								<th class="column2" style="text-align: right">Status</th>
+								<th class="column3" style="text-align: center">Messages</th>
+							</tr>
+						</thead>
+						<tbody>
+								<tr>
+									<td class="column1">Channel 10</td>
+									<td class="column2"><a id="activebadge">ACTIVE</a></td>
+									<td class="column3"><a class="btn" href="cgi-bin/ch10_last.sh">View Last</a><a class="btn" href="cgi-bin/ch10_all.sh">View All</a></td>
+								</tr>
+								<tr>
+									<td class="column1">Channel 11</td>
+									<td class="column2"><a id="activebadge">ACTIVE</a></td>
+									<td class="column3"><a class="btn" href="cgi-bin/ch11_last.sh">View Last</a><a class="btn" href="cgi-bin/ch11_all.sh">View All</a>
+								</tr>
+								<tr>
+									<td class="column1">Channel 12</td>
+									<td class="column2"><a id="activebadge">ACTIVE</a></td>
+									<td class="column3"><a class="btn" href="cgi-bin/ch12_last.sh">View Last</a><a class="btn" href="cgi-bin/ch12_all.sh">View All</a>
+								</tr>
+								<tr>
+									<td class="column1">Channel 13</td>
+									<td class="column2"><a id="activebadge">ACTIVE</a></td>
+									<td class="column3"><a class="btn" href="cgi-bin/ch13_last.sh">View Last</a><a class="btn" href="cgi-bin/ch13_all.sh">View All</a>
+								</tr>
+								<tr>
+									<td class="column1">Channel 14</td>
+									<td class="column2"><a id="activebadge">ACTIVE</a></td>
+									<td class="column3"><a class="btn" href="cgi-bin/ch14_last.sh">View Last</a><a class="btn" href="cgi-bin/ch14_all.sh">View All</a>
+								</tr>
+								<tr>
+									<td class="column1">Channel 15</td>
+									<td class="column2"><a id="activebadge">ACTIVE</a></td>
+									<td class="column3"><a class="btn" href="cgi-bin/ch15_last.sh">View Last</a><a class="btn" href="cgi-bin/ch15_all.sh">View All</a>
+								</tr>
+								<tr>
+									<td class="column1">Channel 16</td>
+									<td class="column2"><a id="activebadge">ACTIVE</a></td>
+									<td class="column3"><a class="btn" href="cgi-bin/ch16_last.sh">View Last</a><a class="btn" href"cgi-bin/ch16_all.sh">View All</a>
+								</tr>
+								<tr>
+									<td class="column1">Channel 17</td>
+									<td class="column2"><a id="activebadge">ACTIVE</a></td>
+									<td class="column3"><a class="btn" href="cgi-bin/ch17_last.sh">View Last</a><a class="btn" href="cgi-bin/ch17_all.sh">View All</a>
+								</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>
