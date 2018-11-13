@@ -32,14 +32,9 @@ UNIX includes
 Project specific includes
 ****************************************/
 #include "./multi_lora_v1d.h"
-
 #include "./rx_utilities.h"
-
 #include "../SX1272/SX1272_registers.h"
-
-
 #include "./rtc_rx8803.h"
-
 SPI spi;
 
 /****************************************
@@ -58,13 +53,10 @@ defines
 /****************************************
 global variables declaration
 ****************************************/
-
 FILE * fd_log;
-
 FILE *fd_index;
 
 FILE *fd_backups;
-
 int  fd_rxdone = -1;
 int  fd_validheader = -1;
 
@@ -72,13 +64,11 @@ __u32 channelSet[8];
 __u32 channelClear;
 
 int i,j; // general purpose index
-
 __u32 chanHex[8];	// 32 bit value containing REG_FRF_MSB, REG_FRF_MID & REG_FRF_LSB 
 
 #ifdef DEBUG2
 int bugindex=0;
 #endif
-
 
 volatile unsigned *gpio;
 
@@ -86,24 +76,17 @@ fd_set fds;
 char buffer[2];
 
 __u32 channel;
-
 unsigned int lastMessageIndex[8];
 
-
-
 char filename[255] ="";
-
 int nb_rec_bytes;
 __u8 reg_val;
 __u8 reg_val_table[255];
 int rssi;
-
 int rxIndex;
 int rxDoneState, validHeaderState;
 int rxCount, rxTimeout;
-
 int backupTimeHour, backupTimeMin;
-
 int fd_alarm = -1;
 int fd_i2c;	// for I2C
 char command[200];
@@ -112,7 +95,6 @@ char file[50];
 char orgfile[50];
 char bakfile[50];
 
-
 /****************************************
 signal handler(s)
 ****************************************/
@@ -120,19 +102,17 @@ signal handler(s)
 /****************************************
 main
 ****************************************/
-
 int main(int argc, char **argv){
-
-// Application Parameters
-	int lg_db = DEFAULT_LNA_GAIN;
-	uint bw_khz = DEFAULT_BANDWIDTH;
-   	double cr = DEFAULT_CODING_RATE;
-   	bool ih_mode = DEFAULT_INPLICIT_HEADER_MODE;
-   	bool rx_payload = DEFAULT_RX_PAYLOAD_CRC;
-   	uint sf = DEFAULT_SPREADING_FACTOR;
-    uint pl_MSB = DEFAULT_PLENGTH_MSB;
-	uint pl_LSB = DEFAULT_PLENGTH_LSB;
-	uint sw = DEFAULT_SYNC_WORD;
+// LoRa Parameters
+int lg_db = DEFAULT_LNA_GAIN;
+unsigned int bw_khz = DEFAULT_BANDWIDTH;
+double cr = DEFAULT_CODING_RATE;
+bool ih_mode = DEFAULT_INPLICIT_HEADER_MODE;
+bool rx_payload = DEFAULT_RX_PAYLOAD_CRC;
+unsigned int sf = DEFAULT_SPREADING_FACTOR;
+unsigned char pl_MSB = DEFAULT_PLENGTH_MS;
+unsigned char pl_LSB = DEFAULT_PLENGTH_LS;
+unsigned char sw = DEFAULT_SYNC_WORD;
 
 //	signal(SIGALRM, sighandler);
 
@@ -153,10 +133,17 @@ if (sscanf(argv[4], "%d", & backupTimeMin) != 1) exit(EXIT_FAILURE);
 	#ifdef DEBUG1
 	fprintf(stdout,"step %d: heure: %d min: %d\n",++bugindex, backupTimeHour, backupTimeMin);
 	#endif
-		
-
 
 fprintf(stdout,"Starting configuration...\n");
+fprintf(stdout, "LNA Gain: %d\n", atoi(argv[0]));
+fprintf(stdout, "Bandwidth: %d\n", atoi(argv[1]));
+fprintf(stdout, "Coding Rate: %d\n", atoi(argv[2]));
+fprintf(stdout, "Inplicit Header Mode: %s\n", argv[3]);
+fprintf(stdout, "Rx Payload Crc: %s\n", argv[4]);
+fprintf(stdout, "Spreading Factor: %d\n", atoi(argv[5]));
+fprintf(stdout, "MSB Preamble Length: %d\n", atoi(argv[6]));
+fprintf(stdout, "LSB Preamble Length: %d\n", atoi(argv[7]));
+fprintf(stdout, "Sync Word: %d\n", atoi(argv[8]));
 
 gpio = map_peripherals();
 

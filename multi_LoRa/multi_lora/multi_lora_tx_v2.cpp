@@ -32,7 +32,6 @@ Project specific includes
 #include "../SX1272/SX1272_registers.h"
 #include "./rtc_rx8803.h"
 
-
 /****************************************
 defines
 ****************************************/
@@ -52,16 +51,12 @@ global variables declaration
 __u32 channelSet[8];
 __u32 channelClear;
 
-
-
 int i,j; // general purpose index
-
 __u32 chanHex[8];	// 32 bit value containing REG_FRF_MSB, REG_FRF_MID & REG_FRF_LSB 
 
 #ifdef DEBUG
 int bugindex=0;
 #endif
-
 
 volatile unsigned *gpio;
 
@@ -69,13 +64,9 @@ volatile unsigned *gpio;
 //char buffer[2];
 
 __u32 channel;
-
 uint lastMessageIndex[8];
 
-
-
 char filename[255] ="";
-
 int nb_trans_bytes;
 __u8 regVal;
 //__u8 reg_val_table[255];
@@ -103,24 +94,22 @@ signal handler(s)
 /****************************************
 main
 ****************************************/
-
 int main(int argc, char **argv){
-
 // LoRa Parameters
-uint op_dbm = DEFAULT_OUTPUT_POWER;
-uint bw_khz = DEFAULT_BANDWIDTH;
+unsigned int op_dbm = DEFAULT_OUTPUT_POWER;
+unsigned int bw_khz = DEFAULT_BANDWIDTH;
 double cr = DEFAULT_CODING_RATE;
 bool ih_mode = DEFAULT_INPLICIT_HEADER_MODE;
 bool rx_payload = DEFAULT_RX_PAYLOAD_CRC;
 uint sf = DEFAULT_SPREADING_FACTOR;
-uint pl_MSB = DEFAULT_PLENGTH_MSB;
-uint pl_LSB = DEFAULT_PLENGTH_LSB;
-uint sw = DEFAULT_SYNC_WORD;
+unsigned char pl_MSB = DEFAULT_PLENGTH_MSB;
+unsigned char pl_LSB = DEFAULT_PLENGTH_LSB;
+unsigned char sw = DEFAULT_SYNC_WORD;
 
 // test command input
-if (argc < 2) {
-	fprintf(stdout, "Usage: %s <channel number10..17> <message (%d characters max)>\n", argv[0],txMsgMaxLen);
-	exit(EXIT_FAILURE);
+if (argc < 11) {
+	fprintf(stdout, "Usage: %s <channel number10..17> <message (%d characters max)>\n", argv[0], txMsgMaxLen);
+	exit(EXIT_FAILURE); 
 }
 
 if (sscanf(argv[1], "%d", & txChannel) != 1) {
@@ -165,13 +154,19 @@ if ((pl_LSB < 6) || (pl_LSB > 65535)) {
 }
 
 
-
 // continue if command OK
-
-
-
-
+argv[0] = txChannel;
 fprintf(stdout,"Starting TX configuration for channel %d...\n", txChannel);
+fprintf(stderr, "Output Power: %d\n", atoi(argv[1]));
+fprintf(stderr, "Bandwidth: %d\n", atoi(argv[2]);
+fprintf(stderr, "Coding Rate: %d\n", atoi(argv[3]);
+fprintf(stderr, "Inplicit Header Mode: %s\n", argv[4]);
+fprintf(stderr, "Rx Payload Crc: %s\n", argv[5]);
+fprintf(stderr, "Spreading Factor: %d\n", atoi(argv[6]));
+fprintf(stderr, "MSB Preamble Length: %d\n", atoi(argv[7]));
+fprintf(stderr, "LSB Preamble Length: %d\n", atoi(argv[8]));
+fprintf(stderr, "Sync Word: %d\n", atoi(argv[9]));
+
 
 gpio = map_peripherals();
 
