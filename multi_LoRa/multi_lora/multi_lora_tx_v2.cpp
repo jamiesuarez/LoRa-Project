@@ -101,7 +101,7 @@ unsigned int bw_khz = DEFAULT_BANDWIDTH;
 double cr = DEFAULT_CODING_RATE;
 bool ih_mode = DEFAULT_INPLICIT_HEADER_MODE;
 bool rx_payload = DEFAULT_RX_PAYLOAD_CRC;
-uint sf = DEFAULT_SPREADING_FACTOR;
+unsigned int sf = DEFAULT_SPREADING_FACTOR;
 unsigned char pl_MSB = DEFAULT_PLENGTH_MSB;
 unsigned char pl_LSB = DEFAULT_PLENGTH_LSB;
 unsigned char sw = DEFAULT_SYNC_WORD;
@@ -113,6 +113,7 @@ if (argc < 11) {
 }
 
 if (sscanf(argv[1], "%d", & txChannel) != 1) {
+
 	exit(EXIT_FAILURE);
 }
 
