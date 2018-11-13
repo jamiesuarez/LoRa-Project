@@ -64,7 +64,7 @@ volatile unsigned *gpio;
 //char buffer[2];
 
 __u32 channel;
-uint lastMessageIndex[8];
+unsigned int lastMessageIndex[8];
 
 char filename[255] ="";
 int nb_trans_bytes;
@@ -85,7 +85,7 @@ char txMsg4[]="BEACON_Channel14";
 char txMsg5[]="BEACON_Channel15";
 char txMsg6[]="BEACON_Channel16";
 char txMsg7[]="BEACON_Channel17";
-uint  txMsgMaxLen = 128;
+unsigned int  txMsgMaxLen = 128;
 
 /****************************************
 signal handler(s)
