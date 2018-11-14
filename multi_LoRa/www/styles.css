@@ -120,7 +120,22 @@ html
     text-decoration: none;
 }
 
-.btn:hover, .btn2:hover, .btn4:hover {
+.btn5 {
+    background-color: #00B4DB;
+    opacity: 0.9;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 13px;
+    padding: 12px 24px;
+    border: none;
+    height: 30px;
+    width: 140px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn:hover, .btn2:hover, .btn4:hover, .btn5:hover {
     background-color: white;
     color: black;
 }
@@ -349,6 +364,7 @@ tbody tr:hover {
   cursor: pointer;
 }
 
+
 .column1 {
   width: 350px;
   padding-left: 40px;
@@ -364,6 +380,18 @@ tbody tr:hover {
     width: 340px;
     text-align: right;
     padding-right: 62px;
+}
+
+.column4 {
+  width: 100px;
+  padding-left: 40px;
+  text-align: right;
+}
+
+.column5 {
+  width: 500px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .wrap-table {
